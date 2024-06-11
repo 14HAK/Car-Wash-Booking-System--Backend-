@@ -1,13 +1,8 @@
-import express from 'express';
-import cors from 'cors';
-const app = express();
+import app from './app';
+import configEnv from './app/config';
 
-app.use(cors());
-app.use(express.json());
+console.log(configEnv?.mongodb_uri as string);
 
-const port = 3000;
-
-app.get('/', (req, res) => res.send('Hello World!'));
-app.listen(port, () =>
-  console.log(`Example app listening on port: http://localhost:${port}`)
+app.listen(configEnv?.port, () =>
+  console.log(`Example app listening on port: http://localhost:${configEnv?.port}`)
 );
