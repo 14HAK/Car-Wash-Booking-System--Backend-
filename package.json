@@ -1,0 +1,42 @@
+{
+  "name": "express-module-design-system--project",
+  "version": "1.0.0",
+  "description": "simple design module pattern example demo project",
+  "main": "./src/server.js",
+  "scripts": {
+    "start": "node dist/server.js",
+    "start:dev": "nodemon",
+    "start:build": "tsc",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "prettier": "prettier \"**/*.{js,jsx,json,md,ts}\" --check",
+    "prettier:fix": "prettier \"**/*.{js,jsx,json,md,ts}\" --write"
+  },
+  "author": "dulon",
+  "license": "ISC",
+  "dependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/mocha": "^10.0.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-mocha": "^10.4.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-require": "^0.0.1",
+    "mocha": "^10.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5",
+    "nodemon": "^3.1.0"
+  }
+}

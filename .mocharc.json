@@ -1,0 +1,6 @@
+{
+  "extensions": ["js"],
+  "spec": ["dist/tests/**/*.spec.js"],
+  "node-option": ["experimental-specifier-resolution=node", "loader=ts-node/esm"],
+  "recursive": true
+}
