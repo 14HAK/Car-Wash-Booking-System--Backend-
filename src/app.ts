@@ -1,7 +1,6 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import cors from 'cors';
 import router from './app/routes';
-import AppError from './app/errors/AppError';
 import globalErrorHandler from './app/middlewares/globalError';
 import notFound from './app/middlewares/notFound';
 
@@ -15,19 +14,13 @@ app.use((req, res, next) => {
   next();
 });
 
-//routes
 app.get('/', (req, res) => {
-  res.status(200).json({ message: 'Hello World!' });
-});
-
-/// custom build error:
-app.get('/error', (req: Request, res: Response) => {
-  throw new AppError('custom build error just testing', 401);
+  res.send('hello world!');
 });
 
 app.use('/api', router);
 
-// ErrorHandler handler
+// Error Handler
 app.use(globalErrorHandler);
 app.use(notFound);
 
