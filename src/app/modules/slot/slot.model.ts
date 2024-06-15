@@ -4,7 +4,8 @@ import TSLOT from './slot.interface';
 const slotSchema = new Schema<TSLOT>({
   service: {
     type: Schema.Types.ObjectId,
-    ref: 'Service'
+    ref: 'Service',
+    required: [true, 'service identification id required']
   },
   date: {
     type: Date,
@@ -19,11 +20,12 @@ const slotSchema = new Schema<TSLOT>({
     required: [true, 'end time must need']
   },
   isBooked: {
-    type: Boolean,
-    default: false
+    type: String,
+    enum: ['available', 'booked', 'canceled'],
+    default: 'available'
   }
 });
 
-const slotModel = model<TSLOT>('Slot', slotSchema);
+const Slot = model<TSLOT>('Slot', slotSchema);
 
-export default slotModel;
+export default Slot;

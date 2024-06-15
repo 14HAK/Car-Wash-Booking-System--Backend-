@@ -1,4 +1,6 @@
-interface TSERVICE {
+import { Document } from 'mongoose';
+
+interface TSERVICE extends Document {
   name: string;
   description: string;
   price: string;

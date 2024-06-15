@@ -21,10 +21,11 @@
     "prettier"
   ],
   "rules": {
-    "no-throw-literal": "off",
+    "no-throw-literal": "warn",
     "@typescript-eslint/no-throw-literal": "error",
     "node/no-missing-import": "off",
     "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-explicit-any": "off",
     "node/no-unsupported-features/es-syntax": [
       "error",
       {

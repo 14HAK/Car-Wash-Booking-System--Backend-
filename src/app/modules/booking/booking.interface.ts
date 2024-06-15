@@ -1,9 +1,9 @@
-import { Types } from 'mongoose';
+import { Document, Schema } from 'mongoose';
 
-interface TBOOKING {
-  customer: Types.ObjectId;
-  service: Types.ObjectId;
-  slot: Types.ObjectId;
+interface TBOOKING extends Document {
+  customer: Schema.Types.ObjectId;
+  service: Schema.Types.ObjectId;
+  slot: Schema.Types.ObjectId;
   vehicleType:
     | 'car'
     | 'truck'

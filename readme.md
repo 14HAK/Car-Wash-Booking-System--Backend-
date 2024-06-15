@@ -49,6 +49,8 @@ To deploy this project run
 - Nodemon
 - Eslint
 - Prettier
+- bcrypt
+- jsonwebtoken
 
 
 

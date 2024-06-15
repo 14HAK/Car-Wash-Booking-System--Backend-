@@ -14,11 +14,14 @@ app.use((req, res, next) => {
   next();
 });
 
+// modular route handlers
+app.use('/api', router);
+
 app.get('/', (req, res) => {
   res.send('hello world!');
 });
 
-app.use('/api', router);
+
 
 // Error Handler
 app.use(globalErrorHandler);

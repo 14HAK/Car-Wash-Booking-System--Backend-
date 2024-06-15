@@ -1,13 +1,13 @@
 import express from 'express';
-import userRouter from './../modules/user/user.router';
 import serviceRouter from '../modules/service/service.router';
 import slotRouter from '../modules/slot/slot.router';
 import bookingRouter from '../modules/booking/booking.router';
+import userRouter from '../modules/auth/user.router';
 const router = express.Router();
 
 const modularRouter = [
   {
-    path: '/user',
+    path: '/auth',
     route: userRouter
   },
   {
@@ -24,6 +24,6 @@ const modularRouter = [
   }
 ];
 
-modularRouter?.forEach((element) => router.use(element?.path, element?.route));
+modularRouter.forEach((route) => router.use(route.path, route.route));
 
 export default router;

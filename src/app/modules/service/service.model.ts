@@ -29,6 +29,6 @@ const serviceSchema = new Schema<TSERVICE>(
   }
 );
 
-const serviceModel = model<TSERVICE>('Service', serviceSchema);
+const Service = model<TSERVICE>('Service', serviceSchema);
 
-export default serviceModel;
+export default Service;
