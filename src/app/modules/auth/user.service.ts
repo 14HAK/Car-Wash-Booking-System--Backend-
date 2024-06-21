@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
-import { TUSER } from './user.interface';
+import { PartialUser, TUSER } from './user.interface';
 import User from './user.model';
-import { AnyObject } from 'mongoose';
 
 export const signupUser = async (data: Partial<TUSER>) => {
   const result = await User.create(data);
@@ -21,7 +20,7 @@ export const passwordCompare = async (
   return isMatch;
 };
 
-export const tokenProvider = async (data: AnyObject): Promise<string> => {
+export const tokenProvider = async (data: PartialUser): Promise<string> => {
   const payload = { ...data };
   const secretKey = 'ro8BS6Hiivgzy8Xuu09JDjlNLnSLldY5';
   const expire = { expiresIn: '1h' };

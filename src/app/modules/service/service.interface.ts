@@ -1,11 +1,12 @@
 import { Document } from 'mongoose';
 
-interface TSERVICE extends Document {
+export interface TSERVICE extends Document {
   name: string;
   description: string;
-  price: string;
+  price: number;
   duration: number;
   isDeleted: boolean;
 }
 
-export default TSERVICE;
+export type PartialService = Partial<TSERVICE>;
+

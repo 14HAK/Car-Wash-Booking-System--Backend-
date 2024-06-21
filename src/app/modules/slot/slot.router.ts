@@ -2,6 +2,6 @@ import express from 'express';
 
 const slotRouter = express.Router();
 
-slotRouter.route('/').get();
+slotRouter.route('/slots').post();
 
 export default slotRouter;

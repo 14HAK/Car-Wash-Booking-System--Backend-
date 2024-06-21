@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import TSERVICE from './service.interface';
+import { TSERVICE } from './service.interface';
 
 const serviceSchema = new Schema<TSERVICE>(
   {
@@ -12,7 +12,7 @@ const serviceSchema = new Schema<TSERVICE>(
       required: [true, 'description must be needed']
     },
     price: {
-      type: String,
+      type: Number,
       required: [true, 'price must be needed']
     },
     duration: {

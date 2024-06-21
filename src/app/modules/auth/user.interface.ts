@@ -9,6 +9,7 @@ export interface TUSER extends Document {
   address: string;
 }
 
+
 export interface UserModel extends Model<TUSER> {
   comparePassword(plainPassword: string, hashedPassword: string): boolean;
 }
@@ -18,3 +19,5 @@ export interface DecodedToken {
   iat: number;
   exp: number;
 }
+
+export type PartialUser = Partial<TUSER>;

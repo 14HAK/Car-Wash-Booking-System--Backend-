@@ -11,11 +11,11 @@ const modularRouter = [
     route: userRouter
   },
   {
-    path: '/service',
+    path: '/',
     route: serviceRouter
   },
   {
-    path: '/slot',
+    path: '/services',
     route: slotRouter
   },
   {
