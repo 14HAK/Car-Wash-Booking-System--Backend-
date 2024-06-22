@@ -13,3 +13,12 @@ export const bookingGet = async () => {
     .populate('slot');
   return result;
 };
+
+export const getAllBookings = async () => {
+  const result = await Booking.find()
+    .populate('user')
+    .populate('service')
+    .populate('slot');
+
+  return result;
+};

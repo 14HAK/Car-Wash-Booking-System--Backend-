@@ -28,6 +28,7 @@ const createBookingData = async (rawData: AnyObject, userId: string) => {
     manufacturingYear,
     registrationPlate
   };
+
   return bookingData;
 };
 
