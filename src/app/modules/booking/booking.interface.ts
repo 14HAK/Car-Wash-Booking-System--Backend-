@@ -17,8 +17,10 @@ interface TBOOKING extends Document {
     | 'tractor';
   vehicleBrand: string;
   vehicleModel: string;
-  manufacturingYear: string;
-  registrationPlace: string;
+  manufacturingYear: number;
+  registrationPlate: string;
 }
+
+export type PartialBookings = Partial<TBOOKING>; 
 
 export default TBOOKING;

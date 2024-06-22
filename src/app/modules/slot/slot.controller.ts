@@ -2,8 +2,9 @@ import { RequestHandler } from 'express';
 import mongoose from 'mongoose';
 import AppError from '../../errors/AppError';
 import totalCountSlots from './utils/totalCountSlots';
-import { existService, slotsCreate } from './slot.service';
+import { existService, slotsAvailable, slotsCreate } from './slot.service';
 import slotValidation from './slot.validation';
+import { makeSearchQuery } from './utils/makeSearchQuery';
 
 export const createSlots: RequestHandler = async (req, res, next) => {
   const data = await req.body;
@@ -48,6 +49,25 @@ export const createSlots: RequestHandler = async (req, res, next) => {
     status: 'true',
     statusCode: 200,
     message: 'Slots created successfully',
+    data: result
+  });
+};
+
+export const availableSlots: RequestHandler = async (req, res, next) => {
+  const serviceId = req.params.serviceId;
+  const query = req.query;
+
+  const finalQuery = await makeSearchQuery(serviceId, query);
+
+  const result = await slotsAvailable(finalQuery);
+  if (!result) {
+    return next(new AppError('slots are not available', 404));
+  }
+
+  res.status(201).json({
+    status: 'true',
+    statusCode: 200,
+    message: 'available slots retrieved successfully',
     data: result
   });
 };

@@ -15,11 +15,11 @@ const modularRouter = [
     route: serviceRouter
   },
   {
-    path: '/services',
+    path: '/',
     route: slotRouter
   },
   {
-    path: '/booking',
+    path: '/',
     route: bookingRouter
   }
 ];

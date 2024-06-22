@@ -1,19 +1,16 @@
 import mongoose from 'mongoose';
 import { z } from 'zod';
-import AppError from '../../errors/AppError';
-
-// Custom validation function for MongoDB ObjectId
-// Custom Zod type for Mongoose ObjectId
-const ObjectId = z.custom<string>((value) => {
-  if (!mongoose.Types.ObjectId.isValid(value)) {
-    throw new AppError('invalid ObjectId', 400);
-  }
-});
 
 const bookingValidation = z.object({
-  customer: ObjectId,
-  service: ObjectId,
-  slot: ObjectId, // Validate against MongoDB ObjectId
+  customer: z?.string().refine((value) => {
+    return mongoose.Types.ObjectId.isValid(value as string);
+  }, 'Invalid ObjectId'),
+  service: z?.string().refine((value) => {
+    return mongoose.Types.ObjectId.isValid(value as string);
+  }, 'Invalid ObjectId'),
+  slot: z?.string().refine((value) => {
+    return mongoose.Types.ObjectId.isValid(value as string);
+  }, 'Invalid ObjectId'),
   vehicleType: z.enum([
     'car',
     'truck',
@@ -28,8 +25,8 @@ const bookingValidation = z.object({
   ]),
   vehicleBrand: z.string(),
   vehicleModel: z.string(),
-  manufacturingYear: z.string(),
-  registrationPlace: z.string()
+  manufacturingYear: z.number(),
+  registrationPlate: z.string()
 });
 
 export default bookingValidation;

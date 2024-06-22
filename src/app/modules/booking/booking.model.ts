@@ -1,22 +1,22 @@
-import { Schema, model } from 'mongoose';
+import mongoose, { Schema, model } from 'mongoose';
 import TBOOKING from './booking.interface';
 
 const bookingSchema = new Schema<TBOOKING>(
   {
     customer: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
-      required: true
+      required: [true, 'userId is required']
     },
     service: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Service',
-      required: true
+      required: [true, 'serviceId is required']
     },
     slot: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Slot',
-      required: true
+      required: [true, 'slotId is required']
     },
     vehicleType: {
       type: String,
@@ -32,23 +32,23 @@ const bookingSchema = new Schema<TBOOKING>(
         'bicycle',
         'tractor'
       ],
-      required: true
+      required: [true, 'vehicleType is required']
     },
     vehicleBrand: {
       type: String,
-      required: true
+      required: [true, 'vehicleBrand is required']
     },
     vehicleModel: {
       type: String,
-      required: true
+      required: [true, 'vehicleModel is required']
     },
     manufacturingYear: {
-      type: String,
-      required: true
+      type: Number,
+      required: [true, 'manufacturingYear is required']
     },
-    registrationPlace: {
+    registrationPlate: {
       type: String,
-      required: true
+      required: [true, 'registrationPlate is required']
     }
   },
   {
@@ -57,6 +57,6 @@ const bookingSchema = new Schema<TBOOKING>(
 );
 
 // Define your mongoose model
-const bookingModel = model<TBOOKING>('Booking', bookingSchema);
+const Booking = model<TBOOKING>('Booking', bookingSchema);
 
-export default bookingModel;
+export default Booking;

@@ -5,6 +5,7 @@ import configEnv from './app/config';
 async function main() {
   try {
     await mongoose.connect(configEnv?.mongodb_uri as string);
+    mongoose.set('strictPopulate', false);
     console.log('mongoose mongoDB connection successfully!');
 
     app.listen(configEnv?.port, () =>

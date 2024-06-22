@@ -1,7 +1,6 @@
 import { RequestHandler } from 'express';
 import AppError from '../errors/AppError';
 import jwt from 'jsonwebtoken';
-import catchAsync from '../utils/catchAsync';
 
 export const authMiddleware: RequestHandler = async (req, res, next) => {
   const authHeader = req.headers.authorization as string | undefined;
