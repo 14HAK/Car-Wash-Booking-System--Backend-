@@ -5,7 +5,9 @@ interface TSLOT extends Document {
   date: Date;
   startTime: string;
   endTime: string;
-  isBooked: 'available' | 'booked' | 'canceled';
+  isBooked?: 'available' | 'booked' | 'canceled';
 }
+
+export type PartialSlot = Partial<TSLOT>;
 
 export default TSLOT;

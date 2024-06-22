@@ -8,8 +8,7 @@ const slotSchema = new Schema<TSLOT>({
     required: [true, 'service identification id required']
   },
   date: {
-    type: Date,
-    default: Date.now()
+    type: Date
   },
   startTime: {
     type: String,
