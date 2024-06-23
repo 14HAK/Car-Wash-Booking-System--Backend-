@@ -10,13 +10,13 @@
 **Affiliation:** Student of .PH  
 **Location:** Casara, Narayanganj, Narayanganj, P.C 1400
 
-# Environment Variable
+# Environment Variable :
 ```javascript
 PORT = "8000"
 MONGODB_URI = "mongodb+srv://<userName>:<password>@cluster0.kcr8r.mongodb.net/<databaseCollectionName>?retryWrites=true&w=majority&appName=Cluster0"
 ```
 
-# Project Setup
+# Project Setup :
 - Clone This Project From Here : [-Github-](https://github.com/14HAK/Car-Wash-Booking-System)
 
 ```javascript
@@ -26,8 +26,8 @@ npm install
 npm install --force
 npm run dev
 ```
-- Server Live Link : [-Server-](https://www.youtube.com)
-- Project Overview Video : [-Video-](https://www.youtube.com)
+- Server Live Link : [-Server-](https://car-wash-xi.vercel.app/)
+- Project Overview Video : [-Video-](https://drive.google.com/file/d/1yrp6PFd9GSZE71-opnELH40QZXqV9k14/view?usp=sharing)
 ```javascript
 // package.json
 "scripts": {
@@ -41,7 +41,7 @@ npm run dev
   }
 ```
 
-# API Reference
+# API Endpoints :
 ### main route path :
 ```javascript
 main-route:
@@ -86,7 +86,7 @@ bookingRouter
 bookingRouter.route('/bookings/my-bookings').get(authMiddleware, isUser, getMyBookings);
 ```
 
-# Project Overview
+# Project Overview :
 - **GitHub repository:**
 
   - Create a GitHub repository named: &{project name}. Ensure the files included ".gitignore" and "readme.md".
@@ -133,7 +133,7 @@ bookingRouter.route('/bookings/my-bookings').get(authMiddleware, isUser, getMyBo
   - using GET method to get all Bookings with mongoose Populate method.
   - using GET method with build in route to get my booking with user role User Authentication and Authorization.
 
-# Technologies
+# Technologies :
  <div style="">
         <ol style=" display: flex;list-style-type: none;">
         <li style=" background-color: #2F74C0; color: white; display: flex;justify-content: center; align-items:center; border-radius: 5px; padding:5px; width:90px; height:14px; text-align:center; font-weight: bold; margin-bottom: 5px; margin-right: 3px">Typescript</li>
