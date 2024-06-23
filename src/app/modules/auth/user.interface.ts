@@ -11,7 +11,7 @@ export interface TUSER extends Document {
 
 
 export interface UserModel extends Model<TUSER> {
-  comparePassword(plainPassword: string, hashedPassword: string): boolean;
+  comparePassword(plainPassword: string, hashedPassword: string): Promise<boolean>;
 }
 
 export interface DecodedToken {

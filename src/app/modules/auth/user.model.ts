@@ -50,7 +50,7 @@ userSchema.pre('save', async function (next) {
 //user mongoose methods
 userSchema.static(
   'comparePassword',
-  function comparePassword(plainPassword, hashedPassword) {
+  async function comparePassword(plainPassword, hashedPassword) {
     return bcrypt.compare(plainPassword, hashedPassword);
   }
 );
