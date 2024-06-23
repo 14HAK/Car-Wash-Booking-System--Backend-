@@ -10,15 +10,21 @@
 **Affiliation:** Student of .PH  
 **Location:** Casara, Narayanganj, Narayanganj, P.C 1400
 
+# Environment Variable
+```javascript
+PORT = "8000"
+MONGODB_URI = "mongodb+srv://<userName>:<password>@cluster0.kcr8r.mongodb.net/<databaseCollectionName>?retryWrites=true&w=majority&appName=Cluster0"
+```
+
 # Project Setup
 - Clone This Project From Here : [-Github-](https://github.com/14HAK/Car-Wash-Booking-System)
 
-```console
-/pc/dulon> git clone "repo link"
-/pc/dulon> cd "repo directory"
-/pc/dulon> npm install
-/pc/dulon> npm install --force
-/pc/dulon> npm run dev
+```javascript
+git clone "repo link"
+cd "repo directory"
+npm install
+npm install --force
+npm run dev
 ```
 - Server Live Link : [-Server-](https://www.youtube.com)
 - Project Overview Video : [-Video-](https://www.youtube.com)
