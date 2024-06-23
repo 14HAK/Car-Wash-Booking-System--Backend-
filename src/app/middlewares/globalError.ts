@@ -5,7 +5,7 @@ const globalErrorHandler: ErrorRequestHandler = async (err, req, res, next) => {
   err.status = err.status || 'Server error';
 
   res.status(err.statusCode).json({
-    status: err.status,
+    success: err.status,
     statusCode: err.statusCode,
     message: err.message
   });

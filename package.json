@@ -5,8 +5,8 @@
   "main": "./src/server.js",
   "scripts": {
     "start": "node dist/server.js",
-    "start:dev": "nodemon",
-    "start:build": "tsc",
+    "dev": "nodemon",
+    "build": "tsc",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "prettier": "prettier \"**/*.{js,jsx,json,md,ts}\" --check",

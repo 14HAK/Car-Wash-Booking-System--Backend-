@@ -7,7 +7,7 @@ const router = express.Router();
 
 const modularRouter = [
   {
-    path: '/auth',
+    path: '/',
     route: userRouter
   },
   {

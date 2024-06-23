@@ -3,8 +3,8 @@ import { userLogin, userSignup } from './user.controller';
 
 const userRouter = express.Router();
 
-userRouter.route('/signup').post(userSignup);
-userRouter.route('/login').post(userLogin);
+userRouter.route('/auth/signup').post(userSignup);
+userRouter.route('/auth/login').post(userLogin);
 
 
 export default userRouter;

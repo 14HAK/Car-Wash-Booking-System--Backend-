@@ -21,7 +21,7 @@ export const userSignup = catchAsync(
     }
 
     res.status(201).json({
-      status: 'true',
+      success: 'true',
       statusCode: 200,
       message: 'user resisters successfully',
       data: result
@@ -37,7 +37,7 @@ export const userLogin = catchAsync(
 
     const user: AnyObject | null = await findUserByEmail(email);
     if (!user) {
-      return next(new AppError('Invalid Credentials', 400));
+      return next(new AppError('No Data Found', 404));
     }
 
     const verifyPassword = await passwordCompare(password, user.password);

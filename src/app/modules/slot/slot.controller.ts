@@ -24,7 +24,7 @@ export const createSlots: RequestHandler = async (req, res, next) => {
 
   const isServiceExist = await existService(serviceId);
   if (!isServiceExist) {
-    return next(new AppError('resource not found', 404));
+    return next(new AppError('No Data Found', 404));
   }
 
   const serviceDuration = isServiceExist?.duration;
@@ -42,11 +42,11 @@ export const createSlots: RequestHandler = async (req, res, next) => {
 
   const result = await slotsCreate(totalSlots);
   if (!result) {
-    return next(new AppError('data created unsuccessful', 500));
+    return next(new AppError('No Data Found', 404));
   }
 
   res.status(201).json({
-    status: 'true',
+    success: 'true',
     statusCode: 200,
     message: 'Slots created successfully',
     data: result
@@ -61,11 +61,11 @@ export const availableSlots: RequestHandler = async (req, res, next) => {
 
   const result = await slotsAvailable(finalQuery);
   if (!result) {
-    return next(new AppError('slots are not available', 404));
+    return next(new AppError('No Data Found', 404));
   }
 
   res.status(201).json({
-    status: 'true',
+    success: 'true',
     statusCode: 200,
     message: 'available slots retrieved successfully',
     data: result

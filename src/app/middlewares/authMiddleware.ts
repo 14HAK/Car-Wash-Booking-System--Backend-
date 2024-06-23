@@ -6,7 +6,7 @@ export const authMiddleware: RequestHandler = async (req, res, next) => {
   const authHeader = req.headers.authorization as string | undefined;
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return next(new AppError('Authorization header missing', 401));
+    return next(new AppError('You have no access to this route', 401));
   }
   // console.log(authHeader);
 
@@ -14,7 +14,7 @@ export const authMiddleware: RequestHandler = async (req, res, next) => {
   const token = authHeader.split(' ')[1];
 
   if (!token) {
-    return next(new AppError('Bearer token missing ', 401));
+    return next(new AppError('You have no access to this route', 401));
   }
   const decoded = jwt.verify(token, secretKey);
   // console.log(decoded);

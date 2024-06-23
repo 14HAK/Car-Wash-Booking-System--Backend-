@@ -2,8 +2,8 @@ import { RequestHandler } from 'express';
 
 const notFound: RequestHandler = (req, res, next) => {
    res.status(404).json({
-     status: false,
-     message: 'API Not Found !!',
+     success: false,
+     message: 'Not Found',
      error: ''
    });
    next();

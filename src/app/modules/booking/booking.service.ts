@@ -19,6 +19,14 @@ export const getAllBookings = async () => {
     .populate('user')
     .populate('service')
     .populate('slot');
+  return result;
+};
+
+export const myBookingsGet = async (userId: string) => {
+  const result = await Booking.findById({ _id: userId })
+    .populate('user')
+    .populate('service')
+    .populate('slot');
 
   return result;
 };
