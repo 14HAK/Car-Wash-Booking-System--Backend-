@@ -3,6 +3,8 @@ import cors from 'cors';
 import router from './app/routes';
 import globalErrorHandler from './app/middlewares/globalError';
 import notFound from './app/middlewares/notFound';
+import zodErrorHandler from './app/errors/zodErrorHandler';
+import mongooseErrorHandler from './app/errors/mongooseErrorHandler';
 
 const app = express();
 app.use(cors());
@@ -21,6 +23,8 @@ app.get('/', (req, res) => {
   res.send('hello world!');
 });
 
+app.use(zodErrorHandler);
+app.use(mongooseErrorHandler);
 
 
 // Error Handler

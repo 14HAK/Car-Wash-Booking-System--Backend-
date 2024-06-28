@@ -22,20 +22,7 @@ async function main() {
       console.log(`server listening on port: http://localhost:${configEnv?.port}`)
     );
   } catch (err: any) {
-    if (err.name === 'ValidationError') {
-      const message = Object.values(err.errors)
-        .map((el: any) => el.message)
-        .join('. ');
-      throw new AppError(message, 400);
-    } else if (err.code === 11000) {
-      const message = `Duplicate field value: ${JSON.stringify(
-        err.keyValue
-      )}. Please use another value!`;
-      throw new AppError(message, 400);
-    } else {
-      // Handle other Mongoose errors
-      throw new AppError(err.message, 500);
-    }
+    throw new AppError('mongoose connection failed!', 500);
   }
 }
 main();
@@ -54,5 +41,12 @@ process.on('SIGTERM', () => {
   console.log('SIGTERM received. Shutting down gracefully...');
   server.close(() => {
     console.log('Process terminated');
+  });
+});
+
+process.on('uncaughtException', (err, origin) => {
+  console.error(`Caught exception: ${err}\n` + `Exception origin: ${origin}`);
+  server.close(() => {
+    console.log('Uncaught Exception');
   });
 });

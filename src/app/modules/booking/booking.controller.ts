@@ -55,7 +55,7 @@ export const getMyBookings: RequestHandler = async (req, res, next) => {
     return next(new AppError('No Data Found', 404));
   }
 
-  res.status(201).json({
+  res.status(200).json({
     success: 'true',
     statusCode: 200,
     message: 'User bookings retrieved successfully',

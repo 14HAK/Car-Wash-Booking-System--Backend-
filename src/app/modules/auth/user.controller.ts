@@ -17,13 +17,13 @@ export const userSignup = catchAsync(
 
     const result = await signupUser(isValidData);
     if (!result) {
-      return next(new AppError('data created unsuccessful', 500));
+      return next(new AppError('data created unsuccessful', 501));
     }
 
     res.status(201).json({
       success: 'true',
       statusCode: 200,
-      message: 'user resisters successfully',
+      message: 'User registered successfully',
       data: result
     });
   }
