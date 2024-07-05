@@ -44,9 +44,3 @@ process.on('SIGTERM', () => {
   });
 });
 
-process.on('uncaughtException', (err, origin) => {
-  console.error(`Caught exception: ${err}\n` + `Exception origin: ${origin}`);
-  server.close(() => {
-    console.log('Uncaught Exception');
-  });
-});
