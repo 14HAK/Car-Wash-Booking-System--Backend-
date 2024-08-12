@@ -28,8 +28,8 @@ const totalCountSlots = async (
     const data: PartialSlot = {
       service: serviceId,
       date,
-      startTime: `${timeStart + elem}:00`,
-      endTime: `${timeStart + elem + 1}:00`
+      startTime: `${(timeStart + elem).toString().padStart(2, '0')}:00`,
+      endTime: `${(timeStart + elem + 1).toString().padStart(2, '0')}:00`
     };
     slots.push(data);
   }

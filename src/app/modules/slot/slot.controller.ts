@@ -60,6 +60,7 @@ export const availableSlots: RequestHandler = catchAsync(async (req, res, next) 
   const query = req.query;
 
   const finalQuery = await makeSearchQuery(serviceId, query);
+  // console.log(finalQuery);
 
   const result = await slotsAvailable(finalQuery);
   if (!result) {

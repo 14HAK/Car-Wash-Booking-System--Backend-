@@ -11,7 +11,11 @@ export const makeSearchQuery = async (
   } else if (!paramsID || query.length >= 1) {
     searchQuery = { ...query, isBooked: 'available' };
   } else if (paramsID || query.length >= 1) {
-    searchQuery = { _id: new Types.ObjectId(paramsID), ...query, isBooked: 'available' };
+    searchQuery = {
+      service: new Types.ObjectId(paramsID),
+      ...query,
+      isBooked: 'available'
+    };
   }
 
   return searchQuery;

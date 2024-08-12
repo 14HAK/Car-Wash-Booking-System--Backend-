@@ -14,6 +14,6 @@ export const slotsCreate = async (totalSlots: Array<PartialSlot>) => {
 };
 
 export const slotsAvailable = async (query: AnyObject) => {
-  const result = await Slot.find(query);
+  const result = await Slot.find(query).populate('service');
   return result;
 };
