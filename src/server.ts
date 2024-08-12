@@ -1,16 +1,11 @@
+/* eslint-disable no-process-exit */
 import mongoose from 'mongoose';
 import app from './app';
 import configEnv from './app/config';
 import AppError from './app/errors/AppError';
+import { Server } from 'http';
 
-let server: any = '';
-
-process.on('uncaughtException', (err) => {
-  console.error('UNCAUGHT EXCEPTION! Shutting down...');
-  console.error(err.name, err.message);
-  const appError = new AppError('Uncaught Exception', 500);
-  throw appError;
-});
+let server: Server;
 
 async function main() {
   try {
@@ -27,20 +22,31 @@ async function main() {
 }
 main();
 
-process.on('unhandledRejection', (reason) => {
-  console.error('UNHANDLED REJECTION! Shutting down...');
-  console.error(reason);
-
+// Handling unhandled promise rejections
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
   server.close(() => {
-    const appError = new AppError('Unhandled Rejection', 500);
-    throw appError;
+    process.exit(1);
   });
 });
 
-process.on('SIGTERM', () => {
-  console.log('SIGTERM received. Shutting down gracefully...');
+// Handling uncaught exceptions
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception thrown:', err);
   server.close(() => {
-    console.log('Process terminated');
+    process.exit(1);
   });
 });
 
+// // Graceful Shutdown Function (Optional)
+// const gracefulShutdown = (server: any, signal: any) => {
+//   console.log(`${signal} received`);
+//   server.close(() => {
+//     console.log('Server closed');
+//     mongoose.connection.close(false);
+//   });
+// };
+
+// // Register the signal handlers
+// process.on('SIGTERM', () => gracefulShutdown(server, 'SIGTERM'));
+// process.on('SIGINT', () => gracefulShutdown(server, 'SIGINT'));

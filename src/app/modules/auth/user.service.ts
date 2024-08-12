@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { PartialUser, TUSER } from './user.interface';
 import User from './user.model';
+import envConfig from '../../config';
 
 export const signupUser = async (data: Partial<TUSER>) => {
   const result = await User.create(data);
@@ -22,10 +23,9 @@ export const passwordCompare = async (
 
 export const tokenProvider = async (data: PartialUser): Promise<string> => {
   const payload = { ...data };
-  const secretKey = 'ro8BS6Hiivgzy8Xuu09JDjlNLnSLldY5';
   const expire = { expiresIn: '1h' };
 
-  const token = jwt.sign(payload, secretKey, expire);
+  const token = jwt.sign(payload, envConfig?.jwt_String as string, expire);
 
   return token;
 };

@@ -21,7 +21,6 @@ const mongooseErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
     const message = `Duplicate field value: ${field} (${value}). Please use another value!`;
     err = new AppError(message, 404);
   }
-
   next(err);
 };
 export default mongooseErrorHandler;

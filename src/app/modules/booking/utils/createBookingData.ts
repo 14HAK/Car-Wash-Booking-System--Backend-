@@ -3,6 +3,8 @@ import Slot from '../../slot/slot.model';
 import AppError from '../../../errors/AppError';
 
 const createBookingData = async (rawData: AnyObject, userId: string) => {
+  const user = userId;
+  // console.log(user);
   const {
     serviceId,
     slotId,
@@ -19,7 +21,7 @@ const createBookingData = async (rawData: AnyObject, userId: string) => {
   }
 
   const bookingData: AnyObject = {
-    customer: userId,
+    customer: user,
     service: serviceId,
     slot: slotId,
     vehicleType,

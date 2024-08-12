@@ -9,25 +9,33 @@ import {
 } from './service.service';
 import AppError from '../../errors/AppError';
 import mongoose from 'mongoose';
+import catchAsync from '../../utils/catchAsync';
 
-export const createServices: RequestHandler = async (req, res, next) => {
-  const rawData = await req.body;
-  const validateData = await serviceValidation.parseAsync(rawData);
+export const createServices: RequestHandler = catchAsync(
+  async (req, res, next): Promise<void> => {
+    const rawData = await req?.body;
+    const validateData = await serviceValidation.parseAsync({ ...rawData });
 
-  const result = await servicesCreate(validateData);
-  if (!result) {
-    return next(new AppError('data created unsuccessful', 500));
+    if (!validateData) {
+      return next(new AppError('data validation rejected', 500));
+    }
+
+    const result = await servicesCreate(validateData);
+
+    if (!result) {
+      return next(new AppError('data created unsuccessful', 500));
+    }
+
+    res.status(201).json({
+      success: 'true',
+      statusCode: 200,
+      message: 'Service created successfully',
+      data: result
+    });
   }
+);
 
-  res.status(201).json({
-    success: 'true',
-    statusCode: 200,
-    message: 'Service created successfully',
-    data: result
-  });
-};
-
-export const getServiceById: RequestHandler = async (req, res, next) => {
+export const getServiceById: RequestHandler = catchAsync(async (req, res, next) => {
   const ID = req.params.id;
 
   const isValidObjectId = mongoose.Types.ObjectId.isValid(ID);
@@ -47,9 +55,9 @@ export const getServiceById: RequestHandler = async (req, res, next) => {
     message: 'Service retrieved successfully',
     data: result
   });
-};
+});
 
-export const getAllServices: RequestHandler = async (req, res, next) => {
+export const getAllServices: RequestHandler = catchAsync(async (req, res, next) => {
   const result = await serviceAll();
   if (!result) {
     return next(new AppError('No Data Found', 404));
@@ -61,11 +69,11 @@ export const getAllServices: RequestHandler = async (req, res, next) => {
     message: 'Services retrieved successfully',
     data: result
   });
-};
+});
 
-export const updateService: RequestHandler = async (req, res, next) => {
+export const updateService: RequestHandler = catchAsync(async (req, res, next) => {
   const ID = req.params.id;
-  const data = req.body;
+  const data = await req.body;
 
   const isValidObjectId = mongoose.Types.ObjectId.isValid(ID);
 
@@ -84,9 +92,9 @@ export const updateService: RequestHandler = async (req, res, next) => {
     message: 'Service updated successfully',
     data: result
   });
-};
+});
 
-export const deleteService: RequestHandler = async (req, res, next) => {
+export const deleteService: RequestHandler = catchAsync(async (req, res, next) => {
   const ID = req.params.id;
 
   const isValidObjectId = mongoose.Types.ObjectId.isValid(ID);
@@ -106,5 +114,5 @@ export const deleteService: RequestHandler = async (req, res, next) => {
     message: 'Service deleted successfully',
     data: result
   });
-};
+});
 

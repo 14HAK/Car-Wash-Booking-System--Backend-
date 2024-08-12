@@ -1,7 +1,7 @@
 import { PartialService } from './service.interface';
 import Service from './service.model';
 
-export const servicesCreate = async (data: PartialService) => {
+export const servicesCreate = async (data: PartialService): Promise<PartialService> => {
   const result = await Service.create({ ...data });
   return result;
 };

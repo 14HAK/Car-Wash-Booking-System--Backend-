@@ -1,3 +1,4 @@
+import { Types } from 'mongoose';
 import { PartialBookings } from './booking.interface';
 import Booking from './booking.model';
 
@@ -8,7 +9,7 @@ export const bookingsCreate = async (bookingData: PartialBookings) => {
 
 export const bookingGet = async () => {
   const result = await Booking.find()
-    .populate('user')
+    .populate('customer')
     .populate('service')
     .populate('slot');
   return result;
@@ -16,15 +17,15 @@ export const bookingGet = async () => {
 
 export const getAllBookings = async () => {
   const result = await Booking.find()
-    .populate('user')
+    .populate('customer')
     .populate('service')
     .populate('slot');
   return result;
 };
 
 export const myBookingsGet = async (userId: string) => {
-  const result = await Booking.findById({ _id: userId })
-    .populate('user')
+  const result = await Booking.find({ customer: userId })
+    .populate('customer')
     .populate('service')
     .populate('slot');
 

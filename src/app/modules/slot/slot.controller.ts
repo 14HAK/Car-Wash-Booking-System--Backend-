@@ -5,8 +5,10 @@ import totalCountSlots from './utils/totalCountSlots';
 import { existService, slotsAvailable, slotsCreate } from './slot.service';
 import slotValidation from './slot.validation';
 import { makeSearchQuery } from './utils/makeSearchQuery';
+import catchAsync from '../../utils/catchAsync';
 
-export const createSlots: RequestHandler = async (req, res, next) => {
+// todo
+export const createSlots: RequestHandler = catchAsync(async (req, res, next) => {
   const data = await req.body;
 
   const isValidData = await slotValidation.parseAsync(data);
@@ -51,9 +53,9 @@ export const createSlots: RequestHandler = async (req, res, next) => {
     message: 'Slots created successfully',
     data: result
   });
-};
+});
 
-export const availableSlots: RequestHandler = async (req, res, next) => {
+export const availableSlots: RequestHandler = catchAsync(async (req, res, next) => {
   const serviceId = req.params.serviceId;
   const query = req.query;
 
@@ -70,4 +72,4 @@ export const availableSlots: RequestHandler = async (req, res, next) => {
     message: 'available slots retrieved successfully',
     data: result
   });
-};
+});

@@ -42,20 +42,21 @@ export const userLogin = catchAsync(
 
     const verifyPassword = await passwordCompare(password, user.password);
     if (!verifyPassword) {
-      return next(new AppError('Invalid Credentials', 400));
+      return next(new AppError('Invalid Credentials password', 400));
     }
 
-    const jwtToken = await tokenProvider(rawData);
-    if (!jwtToken) {
-      return next(new AppError('Invalid Credentials', 400));
+    const token = await tokenProvider(rawData);
+    if (!token) {
+      return next(new AppError('Invalid Credentials token', 400));
     }
+
     // const stringToken = JSON.stringify(jwtToken);
-    res.set('Authorization', `Bearer ${jwtToken}`);
+    res.set('Authorization', `Bearer ${token}`);
     res.status(200).json({
       success: true,
       statusCode: 200,
       message: 'User logged in successfully',
-      token: jwtToken,
+      token: token,
       data: user
     });
   }

@@ -7,20 +7,20 @@ import {
   updateService
 } from './service.controller';
 import { authMiddleware } from '../../middlewares/authMiddleware';
-import { isAdmin } from '../../middlewares/isAdmin';
+import isAuthenticate from '../../middlewares/isAuthenticate';
 
 const serviceRouter = express.Router();
 
 serviceRouter
   .route('/services')
-  .post(authMiddleware, isAdmin, createServices)
+  .post(authMiddleware, isAuthenticate(['admin']), createServices)
   .get(getAllServices);
 
 serviceRouter
   .route('/services/:id?')
   .get(getServiceById)
-  .put(authMiddleware, isAdmin, updateService)
-  .delete(authMiddleware, isAdmin, deleteService);
+  .put(authMiddleware, isAuthenticate(['admin']), updateService)
+  .delete(authMiddleware, isAuthenticate(['admin']), deleteService);
 
 
 export default serviceRouter;

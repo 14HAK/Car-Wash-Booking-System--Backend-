@@ -9,12 +9,14 @@
 
 **Author:** Dulon Mahadi Molla  
 **Affiliation:** Student of .PH  
-**Location:** Casara, Narayanganj, Narayanganj, P.C 1400
+**Location:** Narayanganj, Casara- Dhaka.
 
 # Environment Variable :
 ```javascript
 PORT = "8000"
 MONGODB_URI = "mongodb+srv://<userName>:<password>@cluster0.kcr8r.mongodb.net/<databaseCollectionName>?retryWrites=true&w=majority&appName=Cluster0"
+NODE_ENV = "development"
+JWT_SECRET = "your_secret_string"
 ```
 
 # Project Setup :
@@ -45,46 +47,56 @@ npm run dev
 # API Endpoints :
 ### main route path :
 ```javascript
-main-route:
-  app.use('/api', router);
+app
+  .use('/api', router);
 ```
 
 ### Create User & Authentication :
 ```javascript
-userRouter.route('/auth/signup').post(userSignup);
+userRouter
+  .route('/auth/signup')
+  .post(userSignup);
 
-userRouter.route('/auth/login').post(userLogin);
+userRouter
+  .route('/auth/login')
+  .post(userLogin);
 ```
 
 ### Create Service :
 ```javascript
 serviceRouter
   .route('/services')
-  .post(authMiddleware, isAdmin, createServices)
+  .post(authMiddleware, isAuthenticate(['role_name']), createServices)
   .get(getAllServices);
 
 serviceRouter
   .route('/services/:id?')
   .get(getServiceById)
-  .put(authMiddleware, isAdmin, updateService)
-  .delete(authMiddleware, isAdmin, deleteService);
+  .put(authMiddleware, isAuthenticate(['role_name']), updateService)
+  .delete(authMiddleware, isAuthenticate(['role_name']), deleteService);
 ```
 
 ### Create Slot :
 ```javascript
-slotRouter.route('/services/slots').post(authMiddleware, isAdmin, createSlots);
+slotRouter
+  .route('/services/slots')
+  .post(authMiddleware, isAuthenticate(['role_name']), createSlots);
 
-slotRouter.route('/slots/availability/:serviceId?').get(availableSlots);
+slotRouter
+  .route('/slots/availability/:serviceId?')
+  .get(availableSlots);
 ```
 
 ### Create Booking :
 ```javascript
 bookingRouter
   .route('/bookings')
-  .post(authMiddleware, isUser, createBookings)
+  .post(authMiddleware, isAuthenticate(['role_name']), createBookings)
   .get(getBookingsAll);
 
-bookingRouter.route('/bookings/my-bookings').get(authMiddleware, isUser, getMyBookings);
+bookingRouter
+  .route('/bookings/my-bookings')
+  .get(authMiddleware, isAuthenticate(['role_name']), getMyBookings);
 ```
 
 # Project Overview :
