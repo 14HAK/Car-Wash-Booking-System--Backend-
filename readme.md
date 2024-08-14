@@ -3,7 +3,7 @@
 # Car Wash Booking System
 
 **Version:** 1.0.0
-**variant:** 1
+**variant:** 1.
 
 ---
 
