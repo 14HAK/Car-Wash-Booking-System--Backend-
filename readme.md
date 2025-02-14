@@ -1,5 +1,5 @@
 <img src="https://tbcarwash.ca/wp-content/uploads/2022/04/man-washing-car-two.png" alt="isolated" width="full" style="margin: 0 auto;"/>
-
+<span style = "background-color:RGB(102, 207, 211); color:RGB(15, 2, 2); padding: 1px 8px; border-radius: 5px; font: 15px serif">Express</span>
 # Car Wash Booking System
 
 **Version:** 1.0.0
