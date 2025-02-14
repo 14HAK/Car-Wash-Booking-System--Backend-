@@ -1,5 +1,4 @@
 <img src="https://tbcarwash.ca/wp-content/uploads/2022/04/man-washing-car-two.png" alt="isolated" width="full" style="margin: 0 auto;"/>
-<span style = "background-color:RGB(102, 207, 211); color:RGB(15, 2, 2); padding: 1px 8px; border-radius: 5px; font: 15px serif">Express</span>
 # Car Wash Booking System
 
 **Version:** 1.0.0
@@ -147,19 +146,4 @@ bookingRouter
   - using GET method with build in route to get my booking with user role User Authentication and Authorization.
 
 # Technologies :
- <div style="">
-        <ol style=" display: flex;list-style-type: none;">
-        <li style=" background-color: #2F74C0; color: white; display: flex;justify-content: center; align-items:center; border-radius: 5px; padding:5px; width:90px; height:14px; text-align:center; font-weight: bold; margin-bottom: 5px; margin-right: 3px">Typescript</li>
-        <li style=" background-color: darkgreen; color: white; display: flex;justify-content: center; align-items:center; border-radius: 5px; padding:5px; width:90px; height:14px; text-align:center; font-weight: bold; margin-bottom: 5px; margin-right: 3px">Node.js</li>
-        <li style=" background-color: white; color: black; display: flex;justify-content: center; align-items:center; border-radius: 5px; padding:5px; width:90px; height:14px; text-align:center; font-weight: bold; margin-bottom: 5px; margin-right: 3px">Express.js</li>
-        <li style=" background-color: #840000; color: white; display: flex;justify-content: center; align-items:center; border-radius: 5px; padding:5px; width:90px; height:14px; text-align:center; font-weight: bold; margin-bottom: 5px; margin-right: 3px">Mongoose</li>
-        <li style=" background-color: #00002D; color: white; display: flex;justify-content: center; align-items:center; border-radius: 5px; padding:5px; width:90px; height:14px; text-align:center; font-weight: bold; margin-bottom: 5px; margin-right: 3px">Dotenv</li>
-        <li style=" background-color: #F7A539; color: black; display: flex;justify-content: center; align-items:center; border-radius: 5px; padding:5px; width:90px; height:14px; text-align:center; font-weight: bold; margin-bottom: 5px; margin-right: 3px">Cors</li>
-        <li style=" background-color: #72C949; color: #4D4B3D; display: flex;justify-content: center; align-items:center; border-radius: 5px; padding:5px; width:90px; height:14px; text-align:center; font-weight: bold; margin-bottom: 5px; margin-right: 3px">Nodemon</li>
-        <li style=" background-color: #4930BD; color: white; display: flex;justify-content: center; align-items:center; border-radius: 5px; padding:5px; width:90px; height:14px; text-align:center; font-weight: bold; margin-bottom: 5px; margin-right: 3px">Eslint</li>
-        <li style=" background-color: #192935; color: #E35B5B; display: flex;justify-content: center; align-items:center; border-radius: 5px; padding:5px; width:90px; height:14px; text-align:center; font-weight: bold; margin-bottom: 5px; margin-right: 3px">Prettier</li>
-        <li style=" background-color: #64B8C2; color: #10292E; display: flex;justify-content: center; align-items:center; border-radius: 5px; padding:5px; width:90px; height:14px; text-align:center; font-weight: bold; margin-bottom: 5px; margin-right: 3px">bcrypt</li>
-        <li style=" background-color: #CF38F7; color: black; display: flex;justify-content: center; align-items:center; border-radius: 5px; padding:5px; width:90px; height:14px; text-align:center; font-weight: bold; margin-bottom: 5px; margin-right: 3px">jsonwebtoken</li>
-        <li style=" background-color: tomato; color: black; display: flex;justify-content: center; align-items:center; border-radius: 5px; padding:5px; width:90px; height:14px; text-align:center; font-weight: bold; margin-bottom: 5px; margin-right: 3px">...etc</li>
-        </ol>
-    </div>
+ Express / Typescript
